@@ -14,6 +14,8 @@ libraryDependencies ++= Seq( ws, javaWs, jdbc , ehcache , specs2 % Test , guice 
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.8.1"
 // https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
 libraryDependencies += "javax.ws.rs" % "jsr311-api" % "0.10"
+libraryDependencies += "org.apache.avro" % "avro" % "1.7.7"
+libraryDependencies += "org.apache.kafka" %% "kafka" % "2.1.0"
 
 
 

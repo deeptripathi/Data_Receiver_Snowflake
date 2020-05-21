@@ -35,9 +35,6 @@ class MainActor @Inject() (implicit ec : ExecutionContext) extends  Actor {
 
       androidRequest.data.getOrElse(Seq()).filter(isNonEmptyJsObject).foreach(data => sendDataToSnowFlake(handler,data))
 
-
-
-
       //! means “fire-and-forget”, e.g. send a message asynchronously and return immediately. Also known as tell.
       // ? sends a message asynchronously and returns a Future representing a possible reply. Also known as ask.
       sender ! ResponseSuccess(request)
@@ -48,7 +45,7 @@ class MainActor @Inject() (implicit ec : ExecutionContext) extends  Actor {
   private def sendDataToSnowFlake(handler: Handler, data: JsValue): Unit = breakable {
 
     if ( handler.dataRepositoryConfig.transferToSnowFlake) {
-      handler.convertToJson(data).foreach(sqlModel => {
+      handler.avero(data).foreach(sqlModel => {
         sender ! ResponseSuccess(sqlModel)
       })
     }else {

@@ -10,8 +10,12 @@ import javax.ws.rs.core.MediaType.{APPLICATION_JSON, APPLICATION_OCTET_STREAM}
 import akka.actor._
 import akka.pattern.ask
 import akka.util.Timeout
+import org.apache.avro.Schema
+import org.apache.avro.Schema.Parser
+
 import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future}
+import scala.io.Source
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
@@ -27,6 +31,9 @@ class HomeController @Inject()(@Named("main-actor") mainActor :ActorRef,cc: Cont
    * a path of `/`.
    */
   def index: Action[AnyContent] = Action {
+
+    val schema: Schema = new Parser().parse(Source.fromURL(getClass.getResource("/test.avsc")).mkString)
+
     Ok(views.html.index("Your new application is ready."))
   }
 
@@ -50,7 +57,7 @@ class HomeController @Inject()(@Named("main-actor") mainActor :ActorRef,cc: Cont
   }
 
   private def startMainActor(request: JsValue): Future[Result] = {
-    implicit val duration: Timeout = 20 seconds
+    implicit val duration: Timeout = 20.seconds
 
     //! means “fire-and-forget”, e.g. send a message asynchronously and return immediately. Also known as tell.
     // ? sends a message asynchronously and returns a Future representing a possible reply. Also known as ask.
