@@ -10,8 +10,7 @@ import org.apache.avro.Schema.Parser
 import org.apache.avro.generic.{GenericData, GenericRecord}
 import org.apache.avro.io.{BinaryEncoder, EncoderFactory}
 import org.apache.avro.specific.SpecificDatumWriter
-import kafka.producer.{KeyedMessage, Producer, ProducerConfig}
-import org.apache.kafka.clients.producer.{Producer, ProducerConfig}
+
 
 import scala.io.Source
 
@@ -82,18 +81,18 @@ class DrmInfoHandler (request: AndroidRequest) extends  Handler {
 
 
 
-//
-//
-//
-//    Some(JsObject(Seq(
-//      "person_id" -> Json.toJson(androidRequest.personId),
-//      "device_id" -> Json.toJson(androidRequest.deviceId),
-//      "common_pssh_device_id" -> Json.toJson((data \ "common_pssh_device_id").asOpt[String]),
-//      "clearkey_device_id" -> Json.toJson((data \ "clearkey_device_id").asOpt[String]),
-//      "playready_device_id" -> Json.toJson((data \ "playready_device_id").asOpt[String]),
-//      "widevine_device_id" -> Json.toJson((data \ "widevine_device_id").asOpt[String]),
-//      "server_time" -> Json.toJson(System.currentTimeMillis() / 1000), // unix timestamp
-//    )))
+
+
+
+    Some(JsObject(Seq(
+      "person_id" -> Json.toJson(androidRequest.personId),
+      "device_id" -> Json.toJson(androidRequest.deviceId),
+      "common_pssh_device_id" -> Json.toJson((data \ "common_pssh_device_id").asOpt[String]),
+      "clearkey_device_id" -> Json.toJson((data \ "clearkey_device_id").asOpt[String]),
+      "playready_device_id" -> Json.toJson((data \ "playready_device_id").asOpt[String]),
+      "widevine_device_id" -> Json.toJson((data \ "widevine_device_id").asOpt[String]),
+      "server_time" -> Json.toJson(System.currentTimeMillis() / 1000), // unix timestamp
+    )))
 
   }
 
