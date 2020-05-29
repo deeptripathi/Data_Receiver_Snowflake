@@ -1,0 +1,15 @@
+{
+    "namespace": "Handler",
+     "type": "record",
+     "name": "user",
+     "fields":[
+         {   "name": "personId",  "type": "long"},
+         {   "name": "deviceId", "type": "string"},
+         {   "name": "commonPsshDeviceId", "type": ["string", "null"] },
+         {   "name": "clearkeyDeviceId", "type": ["string", "null"] },
+         {   "name": "playreadyDeviceId", "type": ["string", "null"] },
+         {   "name": "widevineDeviceId", "type": ["string", "null"] },
+         {   "name": "serverTime", "type": "long" }
+
+     ]
+}

@@ -5,6 +5,7 @@
      "fields":[
          {  "name": "id", "type": "int"},
          {   "name": "name",  "type": "string"},
-         {   "name": "email", "type": ["string", "null"]}
+         {   "name": "email", "type": ["string", "null"]},
+         {   "name": "address", "type": ["string", "null"] , "default" : ""}
      ]
 }
