@@ -17,6 +17,7 @@ trait Handler {
 
   def convertToJson(data: JsValue): Option[JsObject] = None
 
+  //def avero(data: JsValue): Option[JsObject] = None
   def avero(data: JsValue): Option[JsObject] = None
 
   val dataRepositoryConfig: DataRepositoryConfig = DataRepositoryConfig(

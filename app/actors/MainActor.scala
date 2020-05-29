@@ -45,8 +45,8 @@ class MainActor @Inject() (implicit ec : ExecutionContext) extends  Actor {
   private def sendDataToSnowFlake(handler: Handler, data: JsValue): Unit = breakable {
 
     if ( handler.dataRepositoryConfig.transferToSnowFlake) {
-      handler.avero(data).foreach(sqlModel => {
-        sender ! ResponseSuccess(sqlModel)
+      handler.avero(data).foreach(jsonResult => {
+        sender ! ResponseSuccess(jsonResult)
       })
     }else {
       sender ! ResponseSuccess(createJson("404",Some("Cannot transfer to snowflake")))
