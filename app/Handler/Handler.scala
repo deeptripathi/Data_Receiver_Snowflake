@@ -20,6 +20,8 @@ trait Handler {
   //def avero(data: JsValue): Option[JsObject] = None
   def avero(data: JsValue): Option[JsObject] = None
 
+  def convertToJsonForKafkaProxy(data: JsValue): JsValue
+
   val dataRepositoryConfig: DataRepositoryConfig = DataRepositoryConfig(
     transferToSnowFlake = false
   )

@@ -44,7 +44,11 @@ class MainActor @Inject() (implicit ec : ExecutionContext) extends  Actor {
 
   private def sendDataToSnowFlake(handler: Handler, data: JsValue): Unit = breakable {
 
+    val js : JsValue = handler.convertToJsonForKafkaProxy(data)
+
     if ( handler.dataRepositoryConfig.transferToSnowFlake) {
+
+
       handler.avero(data).foreach(jsonResult => {
         sender ! ResponseSuccess(jsonResult)
       })

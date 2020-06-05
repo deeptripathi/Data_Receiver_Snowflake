@@ -10,5 +10,5 @@ case class DrmInfo(
                     clearkeyDeviceId: Option[String],
                     playreadyDeviceId: Option[String],
                     widevineDeviceId: Option[String],
-                    serverTime: Timestamp
+                    serverTime: Long
                   )

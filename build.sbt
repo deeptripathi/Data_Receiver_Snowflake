@@ -18,7 +18,18 @@ libraryDependencies ++= Seq( ws, javaWs, jdbc , ehcache , specs2 % Test , guice
 , "io.confluent" % "kafka-avro-serializer" % "3.3.1"
  // https://mvnrepository.com/artifact/net.liftweb/lift-json
 , "net.liftweb" %% "lift-json" % "3.4.1"
+
+// , "com.sksamuel.avro4s" %% "avro4s-macros" % "2.0.4"
+
+,"com.sksamuel.avro4s" %% "avro4s-core" % "3.1.1"
+
+,    "org.scalaj" %% "scalaj-http" % "2.4.2"
+
 )
+
+// https://mvnrepository.com/artifact/com.sksamuel.avro4s/avro4s-macros
+//libraryDependencies += "com.sksamuel.avro4s" %% "avro4s-macros" % "2.0.4"
+
 
 //unmanagedResourceDirectories in Test +=  baseDirectory ( _ /"target/web/public/test" )
 
